@@ -4,21 +4,23 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SQRService {
+class SQRServiceTest {
 
     @Test
-    void shouldCalculateForRegisteredAndBonusUnderLimit() {
+    void shouldNumberSQRForNumbersFromRange() {
         ru.netology.sqr.SQRService service = new ru.netology.sqr.SQRService();
 
-
+        //подготавливаем данные
+        int min = 200;
+        int max = 300;
+        int expected = 3;
 
         // вызываем целевой метод:
-        long actual = service.calculate(amount, registered);
+        int actual = service.numberSQR(min, max);
 
         assertEquals(expected, actual);
+        System.out.println(actual);
     }
-
-
 
 
 }
