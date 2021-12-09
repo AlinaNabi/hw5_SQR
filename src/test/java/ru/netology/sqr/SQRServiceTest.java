@@ -1,19 +1,18 @@
 package ru.netology.sqr;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SQRServiceTest {
 
-    @Test
-    void shouldNumberSQRForNumbersFromRange() {
-        ru.netology.sqr.SQRService service = new ru.netology.sqr.SQRService();
-
-        //подготавливаем данные
-        int min = 200;
-        int max = 300;
-        int expected = 3;
+    @ParameterizedTest
+    @CsvSource(value = {"'number in range from 100 to 300',100,300,8",
+            "'number in range from 200 to 300',200,300,3",
+            "'number in range from 100 to 200',100,200,5"})
+    void shouldNumberSQRForNumbersFromRange(String testSQR, int min, int max, int expected) {
+        SQRService service = new SQRService();
 
         // вызываем целевой метод:
         int actual = service.numberSQR(min, max);
@@ -21,6 +20,4 @@ class SQRServiceTest {
         assertEquals(expected, actual);
         System.out.println(actual);
     }
-
-
 }
